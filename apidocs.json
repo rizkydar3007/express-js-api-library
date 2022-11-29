@@ -1,0 +1,311 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "API Library",
+    "contact": {}
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/books/list": {
+      "get": {
+        "summary": "API Get All List Books",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "APIGetAllListBooks",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/books/check": {
+      "get": {
+        "summary": "API Get All Available List Books",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "APIGetAllAvailableListBooks",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/books/input": {
+      "post": {
+        "summary": "API Input New Books",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "APIInputNewBooks",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/APIInputNewBooksRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/books/borrow": {
+      "post": {
+        "summary": "API Borrow Books",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "APIBorrowBooks",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/APIBorrowBooksRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/books/return": {
+      "delete": {
+        "summary": "API Return Books",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "APIReturnBooks",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/APIReturnBooksRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/members": {
+      "post": {
+        "summary": "API Create Member",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "APICreateMember",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/APICreateMemberRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "get": {
+        "summary": "API Check Member",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "APICheckMember",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "APIInputNewBooksRequest": {
+      "title": "APIInputNewBooksRequest",
+      "example": {
+        "code": "NRN-7",
+        "title": "The Lion, the Witch and the Wardrobe",
+        "author": "C.S Lewis",
+        "stock": 1
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "stock": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "code",
+        "title",
+        "author",
+        "stock"
+      ]
+    },
+    "APIBorrowBooksRequest": {
+      "title": "APIBorrowBooksRequest",
+      "example": {
+        "code_book": "TW-11",
+        "code_member": "M001",
+        "qty": 1
+      },
+      "type": "object",
+      "properties": {
+        "code_book": {
+          "type": "string"
+        },
+        "code_member": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "code_book",
+        "code_member",
+        "qty"
+      ]
+    },
+    "APIReturnBooksRequest": {
+      "title": "APIReturnBooksRequest",
+      "example": {
+        "code_member": "M001",
+        "code_book": "JK-45",
+        "qty": 1
+      },
+      "type": "object",
+      "properties": {
+        "code_member": {
+          "type": "string"
+        },
+        "code_book": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "code_member",
+        "code_book",
+        "qty"
+      ]
+    },
+    "APICreateMemberRequest": {
+      "title": "APICreateMemberRequest",
+      "example": {
+        "code": "M003",
+        "name": "Putri"
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "name"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
